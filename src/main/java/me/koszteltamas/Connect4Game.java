@@ -127,7 +127,7 @@ public class Connect4Game {
     private List<Integer> getValidColumns() {
         List<Integer> validColumns = new ArrayList<>();
         for (int col = 0; col < COLUMNS; col++) {
-            if (board[0][col] == '.') { // Ellenőrizzük, hogy a felső sor üres-e
+            if (board[0][col] == '.') { // Ellenőrizzük, hogy a felső sor üres-e.
                 validColumns.add(col);
             }
         }
