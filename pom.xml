@@ -45,7 +45,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.example.Connect4</mainClass>
+              <mainClass>me.koszteltamas.Connect4Main</mainClass>
             </manifest>
           </archive>
         </configuration>
