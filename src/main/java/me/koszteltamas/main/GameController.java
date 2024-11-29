@@ -1,22 +1,30 @@
-package me.koszteltamas;
+package me.koszteltamas.main;
+
+import me.koszteltamas.game.*;
+import me.koszteltamas.model.Move;
 
 import java.util.Scanner;
 
-public class Connect4Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Connect4Game game = new Connect4Game("connect4.txt");
-        boolean isGameOver = false;
+public class GameController {
+    private final Connect4Game game;
+    private final AIPlayer aiPlayer;
+    private final Scanner scanner = new Scanner(System.in);
 
+    public GameController(String filename) {
+        this.game = new Connect4Game(filename);
+        this.aiPlayer = new AIPlayer();
+    }
+
+    public void startGame() {
+        boolean isGameOver = false;
         System.out.println("Connect4 játék betöltése");
         game.printBoard();
 
-        while (true) {
+        while (!isGameOver) {
             // Játékos lépése
             System.out.println("Te következel! Írj egy számot (0-6) vagy írd be, hogy 'vege', hogy kilépj:");
             String input = scanner.next();
 
-            // Ellenőrizni, hogy a játékos kilépést kér
             if (input.equalsIgnoreCase("vege")) {
                 System.out.println("Kilépés a játékból és az eddigi pálya elmentése...");
                 game.saveGame("connect4.txt");
@@ -24,7 +32,6 @@ public class Connect4Main {
                 break;
             }
 
-            // Ellenőrizzük, hogy a bemenet szám-e
             int playerMove;
             try {
                 playerMove = Integer.parseInt(input);
@@ -46,7 +53,7 @@ public class Connect4Main {
             }
 
             // AI lépése
-            Move aiMove = game.getAIMove();
+            Move aiMove = aiPlayer.generateMove(game.getBoardManager());
             if (aiMove != null) {
                 game.makeMove(aiMove);
                 System.out.println("AI következik:");
@@ -54,16 +61,13 @@ public class Connect4Main {
                 if (game.isWinningMove(aiMove)) {
                     System.out.println("AI nyert! Majd legközelebb.");
                     isGameOver = true;
-                    break;
                 }
             } else {
                 System.out.println("Döntetlen!");
                 isGameOver = true;
-                break;
             }
         }
 
-        // Csak akkor menti a játékállapotot, ha a játékos nem nyert vagy vesztett
         if (!isGameOver) {
             game.saveGame("connect4.txt");
             System.out.println("Játék elmentve.");

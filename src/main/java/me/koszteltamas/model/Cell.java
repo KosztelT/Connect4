@@ -1,4 +1,4 @@
-package me.koszteltamas;
+package me.koszteltamas.model;
 
 import java.util.Objects;
 
@@ -39,5 +39,4 @@ public final class Cell {
                 ", col=" + col +
                 '}';
     }
-
 }

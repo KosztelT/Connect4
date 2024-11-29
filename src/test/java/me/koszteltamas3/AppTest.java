@@ -1,4 +1,4 @@
-package me.koszteltamas;
+package me.koszteltamas3;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

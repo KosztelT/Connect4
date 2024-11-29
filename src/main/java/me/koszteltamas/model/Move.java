@@ -1,4 +1,4 @@
-package me.koszteltamas;
+package me.koszteltamas.model;
 
 public class Move {
     private final int column;
