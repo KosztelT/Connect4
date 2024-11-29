@@ -45,7 +45,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>me.koszteltamas3.Connect4Main</mainClass>
+              <mainClass>me.koszteltamas.Connect4Main</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -61,7 +61,7 @@
           </descriptorRefs>
           <archive>
             <manifest>
-              <mainClass>me.koszteltamas3.Connect4Main</mainClass>
+              <mainClass>me.koszteltamas.Connect4Main</mainClass>
             </manifest>
           </archive>
         </configuration>

@@ -128,4 +128,9 @@ public class BoardManager {
         }
         return validColumns;
     }
+
+    // ÚJ metódus: A játéktábla lekérése
+    public char[][] getBoard() {
+        return board;
+    }
 }
