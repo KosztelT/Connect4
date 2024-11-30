@@ -83,6 +83,7 @@
         <configuration>
           <excludes>
             <exclude>**/Product.*</exclude>
+            <exclude>**/Connect4Main.*</exclude>
           </excludes>
         </configuration>
         <executions>

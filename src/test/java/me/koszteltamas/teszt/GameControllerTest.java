@@ -1,4 +1,2 @@
-package me.koszteltamas.teszt;
-
-public class GameControllerTest {
+package me.koszteltamas.teszt;public class GameControllerTest {
 }
