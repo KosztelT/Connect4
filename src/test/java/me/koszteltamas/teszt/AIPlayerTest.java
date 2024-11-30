@@ -1,7 +1,7 @@
 package me.koszteltamas.teszt;
 
 import me.koszteltamas.game.AIPlayer;
-import me.koszteltamas.game.BoardManager;
+import me.koszteltamas.board.BoardManager;
 import me.koszteltamas.model.Move;
 import org.junit.jupiter.api.Test;
 

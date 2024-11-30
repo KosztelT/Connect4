@@ -1,5 +1,6 @@
 package me.koszteltamas.game;
 
+import me.koszteltamas.board.BoardManager;
 import me.koszteltamas.model.Move;
 
 public class Connect4Game {
