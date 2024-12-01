@@ -1,45 +1,49 @@
 package me.koszteltamas.main;
 
-
 import me.koszteltamas.game.*;
 import me.koszteltamas.model.Move;
 import me.koszteltamas.score.ScoreManager;
 
-
 import java.util.Scanner;
-
 
 public class GameController {
     private final Connect4Game game;
     private final AIPlayer aiPlayer;
-    private final Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner;
     private String name;
 
-
+    // Eredeti konstruktor
     public GameController(String filename) {
         this.game = new Connect4Game(filename);
         this.aiPlayer = new AIPlayer();
+        this.scanner = new Scanner(System.in);
     }
 
+    // Teszteléshez használható konstruktor
+    public GameController(Connect4Game game, AIPlayer aiPlayer, Scanner scanner) {
+        this.game = game;
+        this.aiPlayer = aiPlayer;
+        this.scanner = scanner;
+    }
+
+    // Getter a névhez
+    public String getPlayerName() {
+        return name;
+    }
 
     public void startGame() {
-        // Név bekérése
         System.out.println("Add meg a nevedet:");
         name = scanner.next();
         int points = ScoreManager.getScoreOf(name);
         System.out.println(name + " pontjai: " + points);
 
-
         boolean isGameOver = false;
         System.out.println("Connect4 játék betöltése");
         game.printBoard();
 
-
         while (!isGameOver) {
-            // Játékos lépése
             System.out.println("Te következel! Írj egy számot (0-6) vagy írd be, hogy 'vege', hogy kilépj:");
             String input = scanner.next();
-
 
             if (input.equalsIgnoreCase("vege")) {
                 System.out.println("Kilépés a játékból és az eddigi pálya elmentése...");
@@ -47,7 +51,6 @@ public class GameController {
                 System.out.println("Játék elmentve.");
                 break;
             }
-
 
             int playerMove;
             try {
@@ -57,12 +60,10 @@ public class GameController {
                 continue;
             }
 
-
             if (!game.makeMove(new Move(playerMove, 'S'))) {
                 System.out.println("Helytelen lépés. Próbáld újra.");
                 continue;
             }
-
 
             game.printBoard();
             if (game.isWinningMove(new Move(playerMove, 'S'))) {
@@ -73,8 +74,6 @@ public class GameController {
                 break;
             }
 
-
-            // AI lépése
             Move aiMove = aiPlayer.generateMove(game.getBoardManager());
             if (aiMove != null) {
                 game.makeMove(aiMove);
@@ -90,14 +89,12 @@ public class GameController {
             }
         }
 
-
         if (!isGameOver) {
             game.saveGame("connect4.txt");
             System.out.println("Játék elmentve.");
         } else {
             System.out.println("Játék vége. Nem került sor mentésre.");
         }
-
 
         ScoreManager.printLeaderboard();
         System.out.println("Viszlát!");

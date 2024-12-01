@@ -1,2 +1,1 @@
-Tomi;2
-Bence;3
+Player;1
