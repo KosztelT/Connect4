@@ -18,7 +18,8 @@ public class ScoreManager {
             while (br.ready()) {
                 String line = br.readLine();
                 String[] split = line.split(";");
-                scores.put(split[0], Integer.parseInt(split[1]));
+                if (split.length != 2) continue;
+                    scores.put(split[0], Integer.parseInt(split[1]));
             }
             fr.close();
             br.close();
